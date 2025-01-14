@@ -10,6 +10,11 @@ import Profile from "./views/Profile";
 import UpdateProfile from "./views/UpdateProfile";
 import Guest from "./routes/Guest";
 import Private from "./routes/Private";
+import NewBookForm from "./views/NewBookForm";
+import UpdateBookForm from "./views/UpdateBookForm";
+import NewAuthorRegistration from "./views/NewAuthorRegistration";
+import UpdateAuthor from "./views/UpdateAuthor";
+import Author from "./routes/Author";
 
 interface Props {}
 
@@ -24,6 +29,16 @@ const App: FC<Props> = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/update-profile" element={<UpdateProfile />} />
           <Route path="/new-user" element={<NewUser />} />
+          <Route
+            path="/author-registration"
+            element={<NewAuthorRegistration />}
+          />
+
+          <Route element={<Author />}>
+            <Route path="/update-author" element={<UpdateAuthor />} />
+            <Route path="/create-new-book" element={<NewBookForm />} />
+            <Route path="/update-book/:slug" element={<UpdateBookForm />} />
+          </Route>
         </Route>
 
         <Route element={<Guest />}>
