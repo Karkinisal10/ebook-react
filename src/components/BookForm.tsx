@@ -181,17 +181,17 @@ const BookForm: FC<Props> = ({
       const { file, cover } = bookInfo;
 
       // Validate book file (must be epub type)
-      // if (file?.type !== "application/epub+zip") {
-      //   return setErrors({
-      //     ...errors,
-      //     file: ["Please select a valid (.epub) file."],
-      //   });
-      // } else {
-      //   setErrors({
-      //     ...errors,
-      //     file: undefined,
-      //   });
-      // }
+      if (file?.type !== "application/epub+zip") {
+        return setErrors({
+          ...errors,
+          file: ["Please select a valid (.epub) file."],
+        });
+      } else {
+        setErrors({
+          ...errors,
+          file: undefined,
+        });
+      }
 
       // Validate cover file
       if (cover && !cover.type.startsWith("image/")) {
@@ -239,7 +239,7 @@ const BookForm: FC<Props> = ({
         formData.append("book", file);
       }
 
-      for (let key in bookToSend) {
+      for (const key in bookToSend) {
         type keyType = keyof typeof bookToSend;
         const value = bookToSend[key as keyType];
 
@@ -277,17 +277,17 @@ const BookForm: FC<Props> = ({
       const { file, cover } = bookInfo;
 
       // Validate book file (must be epub type)
-      // if (file && file?.type !== "application/epub+zip") {
-      //   return setErrors({
-      //     ...errors,
-      //     file: ["Please select a valid (.epub) file."],
-      //   });
-      // } else {
-      //   setErrors({
-      //     ...errors,
-      //     file: undefined,
-      //   });
-      // }
+      if (file && file?.type !== "application/epub+zip") {
+        return setErrors({
+          ...errors,
+          file: ["Please select a valid (.epub) file."],
+        });
+      } else {
+        setErrors({
+          ...errors,
+          file: undefined,
+        });
+      }
 
       // Validate cover file
       if (cover && !cover.type.startsWith("image/")) {
@@ -339,7 +339,7 @@ const BookForm: FC<Props> = ({
         formData.append("book", file);
       }
 
-      for (let key in bookToSend) {
+      for (const key in bookToSend) {
         type keyType = keyof typeof bookToSend;
         const value = bookToSend[key as keyType];
 

@@ -15,6 +15,9 @@ import UpdateBookForm from "./views/UpdateBookForm";
 import NewAuthorRegistration from "./views/NewAuthorRegistration";
 import UpdateAuthor from "./views/UpdateAuthor";
 import Author from "./routes/Author";
+import NotFound from "./views/NotFound";
+import SingleBook from "./views/SingleBook";
+import Cart from "./views/Cart";
 
 interface Props {}
 
@@ -23,7 +26,10 @@ const App: FC<Props> = () => {
     <Container>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/book/:slug" element={<SingleBook />} />
         <Route path="/verify" element={<Verify />} />
+        <Route path="/not-found" element={<NotFound />} />
+        <Route path="/cart" element={<Cart />} />
 
         <Route element={<Private />}>
           <Route path="/profile" element={<Profile />} />
@@ -44,6 +50,8 @@ const App: FC<Props> = () => {
         <Route element={<Guest />}>
           <Route path="/sign-up" element={<SignUp />} />
         </Route>
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <Toaster />
